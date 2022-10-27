@@ -1,0 +1,10 @@
+Makefile
+include
+libs
+main.c
+minishell
+minishell_tester
+obj
+src
+test
+tests

@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 12:28:45 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/27 21:14:18 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/27 22:58:26 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,17 @@ void	exec_command_error(char *cmd, int flag)
 	char	*error_message;
 
 	if (flag == 1)
+	{
 		error_message = ft_strjoin(cmd, ": is a directory");
+		g_global_exit_status = (127 - flag);
+	}
 	else
+	{
 		error_message = ft_strjoin(cmd, ": command not found");
-	error_shell(error_message, ERROR_UNDEFINED);
+		g_global_exit_status = 127;
+	}
+	error_shell(error_message, g_global_exit_status);
 	free(error_message);
-	g_global_exit_status = (127 - flag);
 }
 
 int	redirect_error(char *error_message)

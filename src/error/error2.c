@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:24:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/27 21:15:31 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/27 23:06:13 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	error_shell(char *error_message, int flag)
 
 void	error_set_global_exit_status(int flag)
 {
-	if (flag == ENOENT)
+	if (flag == ENOENT || flag == EXIT_CMD_NOT_FOUND)
 		g_global_exit_status = EXIT_CMD_NOT_FOUND;
 	else if (flag == EACCESS)
 		g_global_exit_status = EXIT_CANNOT_EXECUTE;
