@@ -6,7 +6,7 @@
 #    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 15:22:26 by hoomen            #+#    #+#              #
-#    Updated: 2022/10/27 20:21:08 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/10/27 20:37:46 by ktashbae         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ VPATH	=	src/builtins src/destructor src/environment src/error src/execution src/
 INCFL	=	-I libs/ibft -I include -I libs/libgnL
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g #-fsanitize=address
 
 NAME	=	minishell
 SRC		=	main.c\
@@ -51,7 +51,7 @@ OBJ		=	$(addprefix obj/,$(notdir $(SRC:.c=.o)))
 all : $(NAME)
 
 $(NAME) : $(OBJ) | $(LIBS) $(LIBSGNL)
-	$(CC) $(CFLAGS) -o $@ $^ -Llibs/libft -lft -Llibs/gnL -lgnL -lreadline -ltermcap -fsanitize=address
+	$(CC) $(CFLAGS) -o $@ $^ -Llibs/libft -lft -Llibs/gnL -lgnL -lreadline -ltermcap #-fsanitize=address
 	@echo "minishell is compiled"
 
 obj/%.o : %.c | obj

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 12:24:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/26 19:07:48 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/27 21:15:31 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int	error_shell(char *error_message, int flag)
 		ft_putendl_fd(error_message, 2);
 	else if (flag == ERROR_PERROR)
 		perror(error_message);
-	g_global_exit_status = EXIT_FAILURE;
 	return (1);
 }
 

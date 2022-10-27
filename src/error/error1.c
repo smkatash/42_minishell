@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/12 12:28:45 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/26 19:07:44 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/27 21:14:18 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	parsing_syntax_error(char *token)
 	char	*error_message;
 	char	*temp;
 
-	g_global_exit_status = 2;
+	g_global_exit_status = 258;
 	if (token)
 	{
 		temp = ft_strjoin("syntax error near unexpected token `", token);
@@ -35,7 +35,7 @@ void	parsing_syntax_error(char *token)
 
 int	parsing_lexer_error(void)
 {
-	g_global_exit_status = 2;
+	g_global_exit_status = 258;
 	error_shell("parse error: unbalanced quotes", ERROR_UNDEFINED);
 	return (EXIT_ERROR_DEFAULT);
 }

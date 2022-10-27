@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 13:58:18 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/27 19:22:44 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/27 21:21:53 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	run_cmd_child(t_exec *exec, t_cmd_def *cmd, t_minishell *minishell)
 	{		
 		exec->curr_cmd = list_to_argv(cmd->cmd, NULL);
 		envp = make_envp(minishell->env);
-		if (ft_strstr(exec->curr_cmd[0], "sleep"))
-			ft_putstr_fd("Sleep is for the weakest!\n", 1);
 		path = find_path(exec->curr_cmd[0], minishell->env);
 		free_functions(minishell, cmd);
 		if (exec->curr_cmd != NULL && envp != NULL && path != NULL)
