@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:02:28 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/28 19:01:28 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/28 19:24:49 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	start_execution(t_list **nodes, t_minishell *minishell)
 		free_ast_node(nodes);
 	if (exec_cmds.forks && (!exec_cmds.builtin || total_cmds > 1))
 	{
-		while (wait(NULL) > 0);
+		while (wait(&status) > 0);
 		update_exit_status(status);
 	}
 	dup2(fd_temp, 0);
