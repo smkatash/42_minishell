@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 21:27:43 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/28 19:46:42 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/28 20:42:09 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	parent_process(t_exec *exec, t_cmd_def *cmd)
 	node = lst_get_cmd(*exec->cmds_list);
 	if (ft_lstsize(*exec->cmds_list) && cmd && cmd->cmd && \
 		node->type != N_AND && node->type != N_OR && \
-		(!ft_strstr((char *)cmd->cmd->content, "cat")))
+		(!ft_strstr((char *)cmd->cmd->content, "cat") && node->type == N_REDIR))
 	{
 		waitpid(exec->pid, NULL, 0);
 	}

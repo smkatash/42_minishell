@@ -16,7 +16,10 @@ cat <"1""2""3""4""5"
 cat <"./test_files/infile" | echo hi 
 
 cat <"./test_files/infile_big" | echo hi
-
+Test  51: ❌ exit 42 world 
+Test  14: ✅ echo '> >> < * ? [ ] | ; [ ] || && ( ) & # $  <<' 
+Test  15: ❌ echo "exit_code ->$? user ->$USER home -> $HOME"
+Test  16: ❌ echo 'exit_code ->$? user ->$USER home -> $HOME' 
 Test   1: ✅  
 Test   2: ❌ $PWD 
 mini exit code = 0
@@ -170,3 +173,7 @@ Test  17: ❌ echo hi |  "|"
 mini error = ( Command not found)
 bash error = ( command not found)
 /17
+
+Test 138: ❌ $PWD 
+mini exit code = 1
+bash exit code = 126
