@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:20:44 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/16 19:11:30 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/28 19:13:54 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define BUILTINS_H
 
 # include "ms_typedefs.h"
+
+# define EARG_NONNUM "numeric argument required\n"
+# define EARG_TOOMANY "to many arguments\n"
+# define LLONG_MIN_STR "-9223372036854775808"
 
 /* builins.c */
 // bool	builtin(t_exec *exec_cmds, t_minishell *minishell, bool single_builtin);
@@ -28,7 +32,7 @@ void	restore_stdin_stdout_builtin(t_exec *exec, int fd_cpys[2]);
 
 /* builtin_utils.c */
 t_ast	*get_ast_node(t_exec *exec);
-void	free_single_builtin(char **argv, t_exec *exec, t_ast *node);
+void	free_single_builtin(t_exec *exec, t_ast *node);
 
 /* builtin echo */
 void	mini_echo(int argc, char **argv);
