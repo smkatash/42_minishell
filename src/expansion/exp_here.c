@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:13:06 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/26 21:25:53 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 17:35:06 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,33 @@ char	*heredoc_rm_quotes(char *delim)
 	return (ret);
 }
 
+static char	*expansion_error_here(char *s, t_char_buf buf)
+{
+	ft_putstr_fd("minishell: unable to expand (out of memory)\n", 2);
+	free(s);
+	free(buf.buf);
+	return (NULL);
+}
+
+static char	*init_char_buf_check(t_char_buf *buf, char *s)
+{
+	if (s == NULL)
+		return (NULL);
+	init_char_buf(buf);
+	if (buf->buf == NULL)
+		return (expansion_error_here(s, *buf));
+	else
+		return (buf->buf);
+}
+
 char	*expand_here(t_env *env, char *s)
 {
 	t_char_buf	buf;
 	char		*ret;
 	char		*t;
 
-	init_char_buf(&buf);
-	if (buf.buf == NULL)
-		return (s);
+	if (init_char_buf_check(&buf, s) == NULL)
+		return (NULL);
 	t = s;
 	while (*t)
 	{
@@ -60,15 +78,11 @@ char	*expand_here(t_env *env, char *s)
 			t++;
 		}
 		if (buf.buf == NULL)
-		{
-			return (s);
-		}
+			return (expansion_error_here(s, buf));
 	}
 	ret = ft_strdup(buf.buf);
+	if (ret == NULL)
+		return (expansion_error_here(s, buf));
 	free(buf.buf);
-	if (ret != NULL)
-		free(s);
-	else
-		ret = s;
 	return (ret);
 }
