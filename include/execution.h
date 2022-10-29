@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 14:26:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/29 18:35:17 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:46:32 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int			execute_redirection(t_exec	*exec, t_minishell *minishell);
 void		update_redir(t_exec *exec, t_list **redir, int *here_doc);
 int			redirect_here_doc(char *file, int flag, t_exec *exec, \
 			t_minishell *minishell);
+void		free_file_redirection(char *file, int *here_doc);
 
 // Execute commands
 int			execute_cmd_block(t_exec *exec_cmds, t_ast *node, \

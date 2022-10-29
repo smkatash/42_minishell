@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/28 18:24:26 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/29 18:34:29 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:46:13 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int	execute_redirection(t_exec *exec, t_minishell *minishell)
 			status = execute_redirect_inout(file, &exec->fd_in, &exec->fd_out);
 		if (redir->next)
 			redir = redir->next->next;
+		free_file_redirection(file, here_doc);
 	}
 	return (status);
 }

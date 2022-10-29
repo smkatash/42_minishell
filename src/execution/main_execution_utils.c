@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:36:16 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/29 15:31:07 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 20:46:54 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,10 @@ void	execute_cmds_and_builtins(t_exec *exec_cmds, t_ast **node, \
 		exec_cmds->pipe = 1;
 	execute_cmd_block(exec_cmds, *node, minishell);
 	*node = NULL;
+}
+
+void	free_file_redirection(char *file, int *here_doc)
+{
+	if (here_doc[1] != 0)
+		free(file);
 }

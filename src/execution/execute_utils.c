@@ -6,7 +6,7 @@
 /*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:50:25 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/29 19:01:21 by ktashbae         ###   ########.fr       */
+/*   Updated: 2022/10/29 20:52:09 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ int	redirect_here_doc(char *file, int flag, t_exec *exec, \
 		return (execute_heredoc("*", exec, minishell));
 	else
 	{
+		file = heredoc_rm_quotes(file);
 		return (execute_heredoc(file, exec, minishell));
 	}
 }
