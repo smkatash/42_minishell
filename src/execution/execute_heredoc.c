@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_heredoc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/06 10:20:49 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/28 19:31:43 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 17:18:22 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ void	child_process_heredoc(char *delim, int *fd, \
 	update_line = NULL;
 	ft_putstr_fd("> ", 1);
 	get_line = get_next_line(STDIN_FILENO);
-	while (get_line)
+	while (1)
 	{
+		if (get_line == NULL)
+			heredoc_helper_destruction2(delim, 0);
 		update_line = ft_substr(get_line, 0, ft_strlen(get_line) - 1);
 		if (ft_strcmp(delim, update_line) == 0)
 			heredoc_helper_destruction2(delim, 0);
