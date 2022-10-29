@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/13 18:39:14 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/26 19:36:35 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 16:12:56 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	mini_cd_update_env(t_env *env, char *oldpwd, char *newpwd, short valdup)
 	int	upd_oldpwd;
 	int	upd_newpwd;
 
-	upd_oldpwd = update_env(env, "OLDPWD", oldpwd, EXPORT | KEY_DUP);
 	upd_newpwd = update_env(env, "PWD", newpwd, EXPORT | KEY_DUP | valdup);
+	upd_oldpwd = update_env(env, "OLDPWD", oldpwd, EXPORT | KEY_DUP);
 	if (upd_oldpwd)
 	{
 		ft_putstr_fd(WARNING_OLDPWD, 2);
@@ -56,6 +56,20 @@ void	go_home(t_env *env, char *oldpwd)
 	mini_cd_update_env(env, oldpwd, home, VAL_DUP);
 }
 
+void	goto_oldpwd(t_env *env, char *current)
+{
+	char	*oldpwd;
+
+	oldpwd = find_value(env, "OLDPWD");
+	if (oldpwd == NULL)
+		return (error_builtins("cd", NULL, ENOENT));
+	if (check_access(oldpwd))
+		return ;
+	if (chdir(oldpwd) == -1)
+		return (error_builtins("cd", NULL, EXIT_ERROR_DEFAULT));
+	mini_cd_update_env(env, current, oldpwd, VAL_DUP);
+}
+
 void	mini_cd(int argc, char **argv, t_env *env)
 {
 	char	*oldpwd;
@@ -66,6 +80,8 @@ void	mini_cd(int argc, char **argv, t_env *env)
 		return (error_builtins("cd", NULL, EXIT_ERROR_DEFAULT));
 	if (argc == 1)
 		return (go_home(env, oldpwd));
+	if (ft_strcmp("-", argv[1]) == 0)
+		return (goto_oldpwd(env, oldpwd));
 	if (check_access(argv[1]))
 		return ;
 	if (chdir(argv[1]) == -1)
