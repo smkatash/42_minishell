@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execute_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:50:25 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/27 01:49:04 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 19:01:21 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ char	*remove_quotes(char *str)
 	return (removed);
 }
 
-int	get_redirect_file(t_list **redir_list, char **file, int here_doc)
+int	get_redirect_file(t_list **redir_list, char **file, int *here_doc)
 {
 	t_list	*temp;
 	void	*hold;
 	int		status;
 
+	if (here_doc[0] == 0)
+		return (0);
 	status = 0;
 	temp = ft_lstnew(ft_strdup((*redir_list)->content));
 	filename_expansion(&temp);
-	if (ft_lstsize(temp) > 1 && here_doc == 1)
+	if (ft_lstsize(temp) > 1)
 	{
 		status = expansion_error((char *)(*redir_list)->content, ERROR_REDIR);
 		ft_lstclear(&temp, &free);
@@ -89,7 +91,6 @@ int	redirect_here_doc(char *file, int flag, t_exec *exec, \
 		return (execute_heredoc("*", exec, minishell));
 	else
 	{
-		file = heredoc_rm_quotes(file);
 		return (execute_heredoc(file, exec, minishell));
 	}
 }

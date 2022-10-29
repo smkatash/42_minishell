@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   execution.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 14:26:01 by kanykei           #+#    #+#             */
-/*   Updated: 2022/10/29 13:21:37 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 18:35:17 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		execute_cmds_and_builtins(t_exec *exec_cmds, t_ast **node, \
 			t_minishell *minishell);
 void		get_tree(t_list **nodes, t_ast *tree, int node_id);
 void		init_exec_struct(t_exec *exec, t_list **cmds_list);
-int			get_redirect_file(t_list **redir_list, char **file, int here_doc);
+int			get_redirect_file(t_list **redir_list, char **file, int *here_doc);
 char		*remove_quotes(char *str);
 
 // && ||

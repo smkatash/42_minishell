@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exp_here.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/26 20:13:06 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/29 17:35:06 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 19:09:14 by ktashbae         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ char	*expand_here(t_env *env, char *s)
 	if (ret == NULL)
 		return (expansion_error_here(s, buf));
 	free(buf.buf);
+	free(s);
 	return (ret);
 }
