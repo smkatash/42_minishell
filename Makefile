@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 15:22:26 by hoomen            #+#    #+#              #
-#    Updated: 2022/10/27 20:37:46 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/10/29 15:05:20 by hoomen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ VPATH	=	src/builtins src/destructor src/environment src/error src/execution src/
 INCFL	=	-I libs/ibft -I include -I libs/libgnL
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 
 NAME	=	minishell
 SRC		=	main.c\
@@ -31,7 +31,7 @@ SRC		=	main.c\
 			main_execution_utils.c run_processes.c run_cmd.c\
 			wildcard_bonus.c wildcard_filename.c wildcard_path.c wildcard_traverse.c\
 			wildcard_utils.c buf_utils.c dollarsign.c exp_utils.c expander.c quote_removal.c\
-			tilde.c exp_here.c\
+			tilde.c exp_here.c expand_cmd.c\
 			ast_builder.c ast_builder_utils.c char_lexer.c\
 			init_shell.c lexer.c lexer_utils.c\
 			syntax_table1.c syntax_table2.c parser.c parser_utils.c\

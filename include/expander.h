@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 17:00:35 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/26 20:33:28 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 15:15:06 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,15 @@ typedef struct s_char_buf
 # define BUFSIZE 128
 
 /* expander.c */
+char		*expand_string(char *s, t_env *env);
 int			expander(t_list *nodes, t_env *env);
+
+/* expand_cmd.c*/
+int			expand_string_enomem(char *message, int error_flag);
+void		expand_lst_delone(t_list **lst_of_strings, t_list **trav, \
+t_list **prev, char *new_content);
+int			expand_list_cmd(t_list **lst_of_strings, t_env *env, int status, \
+int error_flag);
 
 /* dollarsign.c */
 bool		is_end_of_key(char c);

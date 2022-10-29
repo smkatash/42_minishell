@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 13:21:57 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/26 19:07:28 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 13:50:21 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* expands a single string. Expands dollar sign, expands tilde and 
  * removes quotes if quote_removal is set.
  */
-static char	*expand_string(char *s, t_env *env)
+char	*expand_string(char *s, t_env *env)
 {
 	t_char_buf	buf;
 	char		*ret;
@@ -77,7 +77,7 @@ int	expander(t_list *nodes, t_env *env)
 		if (current->cmds)
 		{
 			if (current->cmds->cmd)
-				status = expand_list(current->cmds->cmd, env, status, \
+				status = expand_list_cmd(&current->cmds->cmd, env, status, \
 				ERROR_CMD);
 			if (current->cmds->redir && !status)
 				status = expand_list(current->cmds->redir, env, status, \
