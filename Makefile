@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ktashbae <ktashbae@student.42heilbronn.    +#+  +:+       +#+         #
+#    By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 15:22:26 by hoomen            #+#    #+#              #
-#    Updated: 2022/10/29 18:55:30 by ktashbae         ###   ########.fr        #
+#    Updated: 2022/10/29 21:21:46 by hoomen           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ VPATH	=	src/builtins src/destructor src/environment src/error src/execution src/
 INCFL	=	-I libs/ibft -I include -I libs/libgnL
 
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror -g #-fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror #-g #-fsanitize=address
 
 NAME	=	minishell
 SRC		=	main.c\
