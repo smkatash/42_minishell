@@ -2,6 +2,7 @@ $EMPTY echo hi
 $EMPTY
 $BLABLA
 $PWD
-
+cat < /dev/urandom | ls
+cat | cat | ls
 
 echo $$

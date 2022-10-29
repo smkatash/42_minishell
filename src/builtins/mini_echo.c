@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:53:53 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/29 02:56:01 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 12:04:19 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,33 +51,6 @@ int	set_newline(char **argv, bool *newline)
 	return (i);
 }
 
-static void	echo_process_id(char *argv)
-{
-	int	j;
-	int	rest;
-
-	j = 0;
-	while (j < (int)ft_strlen(argv) && argv[j] == '$')
-		j++;
-	if (j != 1)
-	{
-		rest = j % 2;
-		j = j / 2;
-		while (j > 0)
-		{
-			ft_putstr_fd(ft_itoa(getpid()), 1);
-			j--;
-		}
-		while (rest > 0)
-		{
-			ft_putstr_fd("$", 1);
-			rest--;
-		}
-		return ;
-	}
-	ft_putstr_fd("$", 1);
-}
-
 /* checks if echo is called without any arguments, in that case, prints a
  * newline and returns. Calls set_newline to set the newline value (1 in 
  * case a newline should be printed, zero in case no newline should be
@@ -98,14 +71,13 @@ void	mini_echo(int argc, char **argv)
 	i = set_newline(argv, &newline);
 	if (argv[i] == NULL)
 		return ;
-	echo_process_id(argv[i]);
 	while (argv[i + 1] != NULL)
 	{
 		ft_putstr_fd(argv[i], 1);
 		write(1, " ", 1);
 		i++;
 	}
-	if (argv[i] && *argv[i] != '$')
+	if (argv[i])
 		ft_putstr_fd(argv[i], 1);
 	if (newline)
 		write(1, "\n", 1);
