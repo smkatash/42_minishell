@@ -6,7 +6,7 @@
 /*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/16 17:02:28 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/29 11:56:44 by kanykei          ###   ########.fr       */
+/*   Updated: 2022/10/29 15:30:44 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,9 @@ functios according to operator
 -> SET GLOBAL STATUS*/
 static void	update_exit_status(int status)
 {
+	while (wait(&status) > 0)
+	{
+	}
 	if (!WIFSIGNALED(status))
 		g_global_exit_status = WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
@@ -95,11 +98,7 @@ int	start_execution(t_list **nodes, t_minishell *minishell)
 	if (status && ft_lstsize(*nodes))
 		free_ast_node(nodes);
 	if (exec_cmds.forks && (!exec_cmds.builtin || total_cmds > 1))
-	{
-		waitpid(exec_cmds.pid, &status, 0);
-		//while (wait(&status) > 0);
 		update_exit_status(status);
-	}
 	dup2(fd_temp, 0);
 	close(fd_temp);
 	if (exec_cmds.fd_out > 1)
