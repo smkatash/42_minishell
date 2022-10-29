@@ -1,4 +1,7 @@
 $EMPTY echo hi 
 $EMPTY
+$BLABLA
 $PWD
+
+
 echo $$
