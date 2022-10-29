@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_execution_utils.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 19:36:16 by ktashbae          #+#    #+#             */
-/*   Updated: 2022/10/26 21:42:49 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 15:31:07 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	execute_cmds_and_builtins(t_exec *exec_cmds, t_ast **node, \
 	temp = (t_ast *)lst_get_cmd(*exec_cmds->cmds_list);
 	if (temp && temp->type == N_PIPE)
 		exec_cmds->pipe = 1;
-	exec_cmds->cmds_list = exec_cmds->cmds_list;
 	execute_cmd_block(exec_cmds, *node, minishell);
 	*node = NULL;
 }

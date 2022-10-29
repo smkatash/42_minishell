@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_echo.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
+/*   By: kanykei <kanykei@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:53:53 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/27 20:35:54 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 12:04:19 by kanykei          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ void	mini_echo(int argc, char **argv)
 		write(1, " ", 1);
 		i++;
 	}
-	ft_putstr_fd(argv[i], 1);
+	if (argv[i])
+		ft_putstr_fd(argv[i], 1);
 	if (newline)
 		write(1, "\n", 1);
 }
