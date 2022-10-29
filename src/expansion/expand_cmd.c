@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/29 13:39:19 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/29 20:07:19 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:15:41 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ static bool	completely_empty(char *s)
 	return (true);
 }
 
-static void	expand_list_continue(char *new_content, t_list **trav, t_list **prev)
+static void	expand_list_continue(char *new_content, t_list **trav, \
+	t_list **prev)
 {
 	free((*trav)->content);
 	(*trav)->content = new_content;

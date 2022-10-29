@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 17:00:35 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/29 20:07:49 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:17:58 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_char_buf
 # define SINGLE_QUOTES 1
 # define DOUBLE_QUOTES 2
 
-# define RM_QUOTES true
-# define LEAVE_QUOTES false
+# define RM_QUOTES 0
+# define LEAVE_QUOTES 1
 
 # define BUFSIZE 128
 
