@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 17:00:35 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/29 15:15:06 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:07:49 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ typedef struct s_char_buf
 # define SINGLE_QUOTES 1
 # define DOUBLE_QUOTES 2
 
+# define RM_QUOTES true
+# define LEAVE_QUOTES false
+
 # define BUFSIZE 128
 
 /* expander.c */
-char		*expand_string(char *s, t_env *env);
+char		*expand_string(char *s, t_env *env, bool rm_quotes);
 int			expander(t_list *nodes, t_env *env);
 
 /* expand_cmd.c*/
@@ -46,6 +49,7 @@ void		expand_dollarsign(t_env *env, char *ptr, t_char_buf *buf);
 
 /* quote_removal.c */
 void		exp_remove_quotes(t_char_buf *buf);
+char		*cmd_rm_quotes(char *s);
 
 /* tilde.c */
 void		expand_tilde(t_env *env, t_char_buf *buf);
