@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 13:21:57 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/29 13:50:21 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:02:15 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /* expands a single string. Expands dollar sign, expands tilde and 
  * removes quotes if quote_removal is set.
  */
-char	*expand_string(char *s, t_env *env)
+char	*expand_string(char *s, t_env *env, bool rm_quotes)
 {
 	t_char_buf	buf;
 	char		*ret;
@@ -26,7 +26,7 @@ char	*expand_string(char *s, t_env *env)
 	expand_dollarsign(env, s, &buf);
 	if (buf.buf != NULL)
 		expand_tilde(env, &buf);
-	if (buf.buf != NULL)
+	if (buf.buf != NULL && rm_quotes)
 		exp_remove_quotes(&buf);
 	ret = ft_strdup(buf.buf);
 	free(buf.buf);
@@ -44,7 +44,7 @@ int	expand_list(t_list *lst_of_strings, t_env *env, int status, int error_flag)
 	trav = lst_of_strings;
 	while (trav != NULL)
 	{
-		new_content = expand_string(trav->content, env);
+		new_content = expand_string(trav->content, env, RM_QUOTES);
 		if (new_content == NULL)
 		{
 			g_global_exit_status = ENOMEM;

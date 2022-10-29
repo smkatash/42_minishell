@@ -6,7 +6,7 @@
 /*   By: hoomen <hoomen@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/12 14:34:28 by hoomen            #+#    #+#             */
-/*   Updated: 2022/10/26 19:03:50 by hoomen           ###   ########.fr       */
+/*   Updated: 2022/10/29 20:11:42 by hoomen           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,6 +119,8 @@ char	*find_path(char *command, t_env *env)
 	char	**all_paths;
 	char	*path;
 
+	if (ft_strcmp(command, "") == 0)
+		return (path_error(command, ENOENT));
 	if (ft_strchr(command, '/'))
 		return (check_full_path(command));
 	all_paths = extract_all_paths(env, command);
