@@ -1,9 +1,0 @@
-Makefile
-include
-libs
-main.c
-minishell
-obj
-src
-text.txt
-tmp_std_outfile
